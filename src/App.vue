@@ -43,9 +43,12 @@ export default {
 </script>
 
 <style>
-@media screen and (min-width: 1200px) {
-  .container {
-    margin: 0;
-  }
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+     text-align: center;
+    margin: auto;
 }
+
 </style>
