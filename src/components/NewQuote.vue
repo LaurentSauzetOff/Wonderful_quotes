@@ -18,6 +18,12 @@ export default {
         return {
             quote: '',
         }
+    },
+    methods: {
+        createNew(){
+            this.$emit('createdQuote', this.quote);
+            this.quote = '';
+        }
     }
 };
 </script>
