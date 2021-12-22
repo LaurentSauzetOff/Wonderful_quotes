@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-      <app-header></app-header>
+      <app-header :quoteCount="quotes.length" :maxQuotes="maxQuotes"></app-header>
     <app-new-quote @createdQuote="newQuoteAdded"></app-new-quote>
     <app-quote-grid
       :quotes="quotes"
@@ -21,7 +21,7 @@ import QuoteGrid from "./components/QuoteGrid.vue";
 import NewQuoteCompo from "./components/NewQuote.vue";
 import Header from "./components/Header.vue";
 export default {
-  components: { appQuoteGrid: QuoteGrid, appNewQuote: NewQuoteCompo, apHeader: Header },
+  components: { appQuoteGrid: QuoteGrid, appNewQuote: NewQuoteCompo, appHeader: Header },
   data: function() {
     return {
       quotes: ["Lire, c'est refuser de mourir."],
@@ -30,6 +30,9 @@ export default {
   },
   methods: {
     newQuoteAdded(quote) {
+        if (this.quotes.length >= this.maxQuotes){
+            return alert('Veuillez supprimer des citations avant d\'en ajouter de nouvelles.')
+        }
       this.quotes.push(quote);
     },
     deleteQuote(index) {
