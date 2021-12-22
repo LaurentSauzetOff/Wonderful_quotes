@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+      <app-header></app-header>
     <app-new-quote @createdQuote="newQuoteAdded"></app-new-quote>
     <app-quote-grid
       :quotes="quotes"
@@ -18,8 +19,9 @@
 <script>
 import QuoteGrid from "./components/QuoteGrid.vue";
 import NewQuoteCompo from "./components/NewQuote.vue";
+import Header from "./components/Header.vue";
 export default {
-  components: { appQuoteGrid: QuoteGrid, appNewQuote: NewQuoteCompo },
+  components: { appQuoteGrid: QuoteGrid, appNewQuote: NewQuoteCompo, apHeader: Header },
   data: function() {
     return {
       quotes: ["Lire, c'est refuser de mourir."],
