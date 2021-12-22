@@ -1,15 +1,25 @@
 <template>
   <div class="container">
-      <app-new-quote @quoteAdded="newQuote"></app-new-quote>
-    <app-quote-grid :quotes="quotes"></app-quote-grid>
+    <app-new-quote @createdQuote="newQuoteAdded"></app-new-quote>
+    <app-quote-grid
+      :quotes="quotes"
+      @quoteDeleted="deleteQuote"
+    ></app-quote-grid>
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <div class="alert alert-info">
+          Cliquez sur une citation pour la supprimer !
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import QuoteGrid from "./components/QuoteGrid.vue";
-import NewQuote from "./components/NewQuote.vue";
+import NewQuoteCompo from "./components/NewQuote.vue";
 export default {
-  components: { appQuoteGrid: QuoteGrid,  appNewQuote: NewQuote},
+  components: { appQuoteGrid: QuoteGrid, appNewQuote: NewQuoteCompo },
   data: function() {
     return {
       quotes: ["Lire, c'est refuser de mourir."],
@@ -17,9 +27,12 @@ export default {
     };
   },
   methods: {
-      newQuote(quote){
-          this.quotes.push(quote);
-      }
+    newQuoteAdded(quote) {
+      this.quotes.push(quote);
+    },
+    deleteQuote(index) {
+      this.quotes.splice(index, 1);
+    }
   }
 };
 </script>
